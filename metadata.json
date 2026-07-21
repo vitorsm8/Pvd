@@ -1,0 +1,6 @@
+{
+  "name": "PDV Restaurante",
+  "description": "Sistema de PDV completo para restaurantes com integração de maquininhas de cartão, controle de mesas e comanda, caixa e relatórios.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
