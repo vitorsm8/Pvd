@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- POS Terminal Screen & Keypad Silhouette -->
+    <path
+        android:fillColor="#FFFFB74D"
+        android:pathData="M38,26h32c3.3,0 6,2.7 6,6v44c0,3.3 -2.7,6 -6,6H38c-3.3,0 -6,-2.7 -6,-6V32c0,-3.3 2.7,-6 6,-6z" />
+    <path
+        android:fillColor="#FF212121"
+        android:pathData="M36,30h36v20H36z" />
+    <!-- Receipt slot -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M42,22h24v6H42z" />
+    <!-- Keypad buttons -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M38,54h8v6h-8zM50,54h8v6h-8zM62,54h8v6h-8zM38,63h8v6h-8zM50,63h8v6h-8zM62,63h8v6h-8zM38,72h8v6h-8zM50,72h8v6h-8zM62,72h8v6h-8z" />
+</vector>

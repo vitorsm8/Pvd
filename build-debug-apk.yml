@@ -1,0 +1,48 @@
+name: Build Debug APK
+
+# Roda automaticamente em todo push na main, e também pode ser disparado
+# manualmente pela aba "Actions" do GitHub (botão "Run workflow") caso você
+# queira gerar um APK sem precisar dar push.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Configurar Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar platform/build-tools do compileSdk do projeto
+        run: yes | sdkmanager --install "platforms;android-36" "build-tools;36.0.0"
+
+      # Não há gradlew commitado no repo, então instalamos o Gradle direto.
+      # Isso NÃO precisa do .env (chave real do Gemini etc.) — o projeto cai
+      # automaticamente no .env.example, que só tem placeholders. O app builda
+      # e roda normalmente; só o assistente de IA usa a resposta local de
+      # fallback até você configurar o .env de verdade (veja o README).
+      - name: Configurar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: current
+
+      - name: Compilar APK de debug
+        run: gradle assembleDebug --stacktrace
+
+      - name: Disponibilizar APK pra download
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdv-gourmet-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 14
